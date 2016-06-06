@@ -1,5 +1,10 @@
 {
   "ship1": {
+    "stats": {
+      "acceleration":3,
+      "topSpeed":10,
+      "turnSpeed":100
+    },
     "design": "ship1",
     "themeColors":[
       ["main",0.3,0.6,1],

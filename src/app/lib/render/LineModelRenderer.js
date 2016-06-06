@@ -84,8 +84,7 @@ class LineModelRenderer {
         });
     }
 
-    getCurrentLineList(rotation=0, scale=1){
-        const lines = [];
+    getCurrentLineList(lines=[],x=0,y=0,rotation=0, scale=1){
         const self = _self.get(this);
 
         self.lineData.parts.forEach(part=>{
@@ -104,6 +103,7 @@ class LineModelRenderer {
                     let newPoint = {};
                     for (let a=0; a<point.length; a++)
                          newPoint[a] = (point[a]*progress) + (prevPoint[a]*(1-progress));
+
                     let ret = Util.vector2FromRotation(
                         newPoint[1]*self.lineData.scale*scale,
                         newPoint[0]+self.lineData.rotate+rotation
@@ -115,6 +115,8 @@ class LineModelRenderer {
                         for (let n=2; n<=4; n++){
                             newPoint[n] = (newPoint[n]*(1-newPoint[c+6])) + (self.lineData.themeColors[c][n-1]*newPoint[c+6]);
                         }
+                    ret[0]+=x;
+                    ret[1]+=y;
                     ret[3] = newPoint[2];
                     ret[4] = newPoint[3];
                     ret[5] = newPoint[4];
