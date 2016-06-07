@@ -21,7 +21,7 @@ function run() {
     const webGL = new WebGL(true);
     const stars = new StarsRenderer(60,30,400);
     const arena = new Arena(controller, camera, webGL, stars);
-    const ship = new Ship('ship1');
+    const ship = new Ship('edge');
 
     camera.attachTo(ship);
     arena.addShip(ship);
